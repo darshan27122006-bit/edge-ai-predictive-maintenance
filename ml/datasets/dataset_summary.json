@@ -1,0 +1,36 @@
+{
+  "total_samples": 2100,
+  "train_samples": 1470,
+  "val_samples": 315,
+  "test_samples": 315,
+  "samples_per_class": 350,
+  "features": [
+    "vibration_rms",
+    "vibration_peak",
+    "vibration_p2p",
+    "vibration_std",
+    "crest_factor",
+    "kurtosis",
+    "skewness",
+    "temperature_c"
+  ],
+  "classes": {
+    "0": "Normal Operation",
+    "1": "Imbalance",
+    "2": "Misalignment",
+    "3": "Bearing Fault",
+    "4": "Excessive Vibration",
+    "5": "Abnormal Temperature"
+  },
+  "class_slugs": {
+    "0": "normal",
+    "1": "imbalance",
+    "2": "misalignment",
+    "3": "bearing_fault",
+    "4": "excessive_vibration",
+    "5": "abnormal_temperature"
+  },
+  "sampling_rate_hz": 100,
+  "window_size": 128,
+  "standard_reference": "ISO 10816-3 Mechanical Vibration Evaluation"
+}

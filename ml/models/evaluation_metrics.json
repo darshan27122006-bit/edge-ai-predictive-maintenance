@@ -1,0 +1,321 @@
+{
+  "model_name": "Edge-AI Machinery Fault Classifier",
+  "version": "1.2.0",
+  "architecture": "Ensemble Decision Forest & Compact MLP",
+  "primary_model": "RandomForest",
+  "tinyml_model": "Quantized Tree & Neural Classifier",
+  "feature_count": 8,
+  "features": [
+    "vibration_rms",
+    "vibration_peak",
+    "vibration_p2p",
+    "vibration_std",
+    "crest_factor",
+    "kurtosis",
+    "skewness",
+    "temperature_c"
+  ],
+  "classes": [
+    "Normal Operation",
+    "Imbalance",
+    "Misalignment",
+    "Bearing Fault",
+    "Excessive Vibration",
+    "Abnormal Temperature"
+  ],
+  "class_slugs": [
+    "normal",
+    "imbalance",
+    "misalignment",
+    "bearing_fault",
+    "excessive_vibration",
+    "abnormal_temperature"
+  ],
+  "training_dataset": {
+    "total_samples": 2100,
+    "train_samples": 1470,
+    "val_samples": 315,
+    "test_samples": 315,
+    "type": "Stratified physical dynamics benchmark"
+  },
+  "evaluation": {
+    "RandomForest": {
+      "accuracy": 0.9937,
+      "precision_macro": 0.9937,
+      "recall_macro": 0.994,
+      "f1_macro": 0.9938,
+      "f1_weighted": 0.9937,
+      "confusion_matrix": [
+        [
+          41,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          49,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          48,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          54,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          56,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          65
+        ]
+      ],
+      "classes": [
+        "Normal Operation",
+        "Imbalance",
+        "Misalignment",
+        "Bearing Fault",
+        "Excessive Vibration",
+        "Abnormal Temperature"
+      ],
+      "class_slugs": [
+        "normal",
+        "imbalance",
+        "misalignment",
+        "bearing_fault",
+        "excessive_vibration",
+        "abnormal_temperature"
+      ],
+      "per_class_metrics": [
+        {
+          "class_id": 0,
+          "class_name": "Normal Operation",
+          "class_slug": "normal",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "support": 41
+        },
+        {
+          "class_id": 1,
+          "class_name": "Imbalance",
+          "class_slug": "imbalance",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "support": 49
+        },
+        {
+          "class_id": 2,
+          "class_name": "Misalignment",
+          "class_slug": "misalignment",
+          "precision": 0.9796,
+          "recall": 1.0,
+          "f1_score": 0.9897,
+          "support": 48
+        },
+        {
+          "class_id": 3,
+          "class_name": "Bearing Fault",
+          "class_slug": "bearing_fault",
+          "precision": 1.0,
+          "recall": 0.9818,
+          "f1_score": 0.9908,
+          "support": 55
+        },
+        {
+          "class_id": 4,
+          "class_name": "Excessive Vibration",
+          "class_slug": "excessive_vibration",
+          "precision": 0.9825,
+          "recall": 0.9825,
+          "f1_score": 0.9825,
+          "support": 57
+        },
+        {
+          "class_id": 5,
+          "class_name": "Abnormal Temperature",
+          "class_slug": "abnormal_temperature",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "support": 65
+        }
+      ],
+      "latency": {
+        "avg_ms": 11.3324,
+        "p95_ms": 15.2175,
+        "samples_tested": 1000,
+        "hardware_environment": "Intel/AMD x86_64 Desktop Python Runtime"
+      }
+    },
+    "MLP_NeuralNet": {
+      "accuracy": 0.9873,
+      "precision_macro": 0.9881,
+      "recall_macro": 0.9881,
+      "f1_macro": 0.9881,
+      "f1_weighted": 0.9873,
+      "confusion_matrix": [
+        [
+          41,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          49,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          48,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          53,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          55,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          65
+        ]
+      ],
+      "classes": [
+        "Normal Operation",
+        "Imbalance",
+        "Misalignment",
+        "Bearing Fault",
+        "Excessive Vibration",
+        "Abnormal Temperature"
+      ],
+      "class_slugs": [
+        "normal",
+        "imbalance",
+        "misalignment",
+        "bearing_fault",
+        "excessive_vibration",
+        "abnormal_temperature"
+      ],
+      "per_class_metrics": [
+        {
+          "class_id": 0,
+          "class_name": "Normal Operation",
+          "class_slug": "normal",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "support": 41
+        },
+        {
+          "class_id": 1,
+          "class_name": "Imbalance",
+          "class_slug": "imbalance",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "support": 49
+        },
+        {
+          "class_id": 2,
+          "class_name": "Misalignment",
+          "class_slug": "misalignment",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "support": 48
+        },
+        {
+          "class_id": 3,
+          "class_name": "Bearing Fault",
+          "class_slug": "bearing_fault",
+          "precision": 0.9636,
+          "recall": 0.9636,
+          "f1_score": 0.9636,
+          "support": 55
+        },
+        {
+          "class_id": 4,
+          "class_name": "Excessive Vibration",
+          "class_slug": "excessive_vibration",
+          "precision": 0.9649,
+          "recall": 0.9649,
+          "f1_score": 0.9649,
+          "support": 57
+        },
+        {
+          "class_id": 5,
+          "class_name": "Abnormal Temperature",
+          "class_slug": "abnormal_temperature",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1_score": 1.0,
+          "support": 65
+        }
+      ],
+      "latency": {
+        "avg_ms": 0.5307,
+        "p95_ms": 0.8548,
+        "samples_tested": 1000,
+        "hardware_environment": "Intel/AMD x86_64 Desktop Python Runtime"
+      }
+    }
+  },
+  "esp32_hardware_profile": {
+    "target_mcu": "ESP32-D0WDQ6 (240MHz dual-core Xtensa LX6)",
+    "ram_allocated_kb": 24.5,
+    "flash_footprint_kb": 32.8,
+    "estimated_edge_latency_ms": 1.45,
+    "inference_mode": "On-Device TinyML C++ Engine"
+  },
+  "timestamp": "2026-10-28T02:34:14Z"
+}
